@@ -1,5 +1,5 @@
 Sample to solve issue https://github.com/JetBrains/compose-jb/issues/1767  
-(to hide Compose in system tray on Windows)  
+(not show Composable dialog on Windows task bar)  
 
 On Windows:  
 `gradlew.bat run`  
