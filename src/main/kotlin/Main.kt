@@ -11,6 +11,8 @@ import javax.swing.SwingUtilities
 import javax.swing.WindowConstants
 import kotlin.system.exitProcess
 
+// Thanks to https://stackoverflow.com/questions/2054347/show-jframe-but-not-show-title-bar-on-task-bar
+
 fun main() = SwingUtilities.invokeLater {
     val jFrameDialog = JDialog()
     jFrameDialog.defaultCloseOperation = WindowConstants.HIDE_ON_CLOSE //todo you can't use EXIT_ON_CLOSE
