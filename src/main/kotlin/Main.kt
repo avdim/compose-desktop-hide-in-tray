@@ -4,6 +4,8 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.awt.ComposePanel
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.application
 import java.awt.*
 import java.awt.event.ActionListener
 import javax.swing.JDialog
@@ -13,7 +15,15 @@ import kotlin.system.exitProcess
 
 // Thanks to https://stackoverflow.com/questions/2054347/show-jframe-but-not-show-title-bar-on-task-bar
 
-fun main() = SwingUtilities.invokeLater {
+fun main() = application {
+    Dialog(onCloseRequest = ::exitApplication) {
+        Column {
+            Text("Text inside Compose")
+        }
+    }
+}
+
+fun main2() = SwingUtilities.invokeLater {
     val jFrameDialog = JDialog()
     jFrameDialog.defaultCloseOperation = WindowConstants.HIDE_ON_CLOSE //todo you can't use EXIT_ON_CLOSE
     jFrameDialog.title = "SwingComposeDialog"
