@@ -1,6 +1,7 @@
 // Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
 import androidx.compose.material.MaterialTheme
 import androidx.compose.desktop.ui.tooling.preview.Preview
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -8,8 +9,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.awt.ComposePanel
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import java.awt.BorderLayout
+import javax.swing.JFrame
+import javax.swing.SwingUtilities
+import javax.swing.WindowConstants
 
 @Composable
 @Preview
@@ -25,8 +31,28 @@ fun App() {
     }
 }
 
-fun main() = application {
+fun mainOld() = application {
     Window(onCloseRequest = ::exitApplication) {
         App()
     }
+}
+
+fun main() = SwingUtilities.invokeLater {
+    val window = HideToSystemTray() // or simple JFrame()
+    val composePanel = ComposePanel()
+    window.defaultCloseOperation = WindowConstants.EXIT_ON_CLOSE
+    window.title = "SwingComposeWindow"
+    window.contentPane.add(composePanel, BorderLayout.CENTER)
+    composePanel.setContent {
+        Column {
+            Text("composePanel setContent")
+            Button(onClick = {
+                window.hideToTray()
+            }) {
+                Text("Hide window to tray")
+            }
+        }
+    }
+    window.setSize(800, 600)
+    window.isVisible = true
 }

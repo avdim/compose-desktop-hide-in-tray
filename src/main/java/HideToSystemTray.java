@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowStateListener;
 
+// Thanks to: https://stackoverflow.com/questions/7461477/how-to-hide-a-jframe-in-system-tray-of-taskbar
 public class HideToSystemTray extends JFrame {
     TrayIcon trayIcon;
     SystemTray tray;
@@ -50,13 +51,7 @@ public class HideToSystemTray extends JFrame {
         addWindowStateListener(new WindowStateListener() {
             public void windowStateChanged(WindowEvent e) {
                 if (e.getNewState() == ICONIFIED) {
-                    try {
-                        tray.add(trayIcon);
-                        setVisible(false);
-                        System.out.println("added to SystemTray");
-                    } catch (AWTException ex) {
-                        System.out.println("unable to add to tray");
-                    }
+                    hideToTray();
                 }
                 if (e.getNewState() == 7) {
                     try {
@@ -84,6 +79,16 @@ public class HideToSystemTray extends JFrame {
         setVisible(true);
         setSize(300, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void hideToTray() {
+        try {
+            tray.add(trayIcon);
+            setVisible(false);
+            System.out.println("added to SystemTray");
+        } catch (AWTException ex) {
+            System.out.println("unable to add to tray");
+        }
     }
 
     public static void main(String[] args) {
