@@ -1,4 +1,4 @@
-solve issue https://github.com/JetBrains/compose-jb/issues/1767  
+Sample to solve issue https://github.com/JetBrains/compose-jb/issues/1767  
 
 On Windows:  
 `gradlew.bat run`  
