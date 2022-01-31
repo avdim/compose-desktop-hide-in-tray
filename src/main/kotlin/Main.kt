@@ -31,12 +31,6 @@ fun App() {
     }
 }
 
-fun mainOld() = application {
-    Window(onCloseRequest = ::exitApplication) {
-        App()
-    }
-}
-
 fun main() = SwingUtilities.invokeLater {
     val window = HideToSystemTray() // or simple JFrame()
     val composePanel = ComposePanel()
