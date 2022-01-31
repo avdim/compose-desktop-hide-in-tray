@@ -1,4 +1,5 @@
 Sample to solve issue https://github.com/JetBrains/compose-jb/issues/1767  
+(to hide Compose in system tray on Windows)  
 
 On Windows:  
 `gradlew.bat run`  
