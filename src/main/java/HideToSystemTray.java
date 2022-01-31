@@ -51,7 +51,7 @@ public class HideToSystemTray extends JFrame {
         addWindowStateListener(new WindowStateListener() {
             public void windowStateChanged(WindowEvent e) {
                 if (e.getNewState() == ICONIFIED) {
-                    hideToTray();
+                    moveToTray(true);
                 }
                 if (e.getNewState() == 7) {
                     try {
@@ -81,10 +81,12 @@ public class HideToSystemTray extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public void hideToTray() {
+    public void moveToTray(boolean hideWindow) {
         try {
             tray.add(trayIcon);
-            setVisible(false);
+            if (hideWindow) {
+                setVisible(false);
+            }
             System.out.println("added to SystemTray");
         } catch (AWTException ex) {
             System.out.println("unable to add to tray");

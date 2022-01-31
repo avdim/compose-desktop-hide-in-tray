@@ -10,10 +10,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.awt.ComposePanel
-import androidx.compose.ui.window.Window
-import androidx.compose.ui.window.application
 import java.awt.BorderLayout
-import javax.swing.JFrame
 import javax.swing.SwingUtilities
 import javax.swing.WindowConstants
 
@@ -41,9 +38,14 @@ fun main() = SwingUtilities.invokeLater {
         Column {
             Text("composePanel setContent")
             Button(onClick = {
-                window.hideToTray()
+                window.moveToTray(true)
             }) {
-                Text("Hide window to tray")
+                Text("hide window to tray")
+            }
+            Button(onClick = {
+                window.moveToTray(false)
+            }) {
+                Text("move to tray, but don't hide window")
             }
         }
     }
