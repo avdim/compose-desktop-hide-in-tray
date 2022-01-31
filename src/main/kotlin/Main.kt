@@ -4,11 +4,13 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.ui.awt.ComposePanel
 import java.awt.BorderLayout
+import java.awt.Window
 import javax.swing.SwingUtilities
 import javax.swing.WindowConstants
 
 fun main() = SwingUtilities.invokeLater {
     val jFrameWindow = HideToSystemTray()
+    jFrameWindow.setType(Window.Type.UTILITY)
     val composePanel = ComposePanel()
     jFrameWindow.defaultCloseOperation = WindowConstants.EXIT_ON_CLOSE
     jFrameWindow.title = "SwingComposeWindow"
