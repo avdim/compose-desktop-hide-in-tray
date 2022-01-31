@@ -9,11 +9,11 @@ import javax.swing.SwingUtilities
 import javax.swing.WindowConstants
 
 fun main() = SwingUtilities.invokeLater {
-    val jFrameWindow = JDialog()
+    val jFrameDialog = JDialog()
+    jFrameDialog.defaultCloseOperation = WindowConstants.HIDE_ON_CLOSE //todo you can't use EXIT_ON_CLOSE
+    jFrameDialog.title = "SwingComposeDialog"
     val composePanel = ComposePanel()
-    jFrameWindow.defaultCloseOperation = WindowConstants.EXIT_ON_CLOSE
-    jFrameWindow.title = "SwingComposeWindow"
-    jFrameWindow.contentPane.add(composePanel, BorderLayout.CENTER)
+    jFrameDialog.contentPane.add(composePanel, BorderLayout.CENTER)
     composePanel.setContent {
         Column {
             Text("composePanel setContent")
@@ -29,6 +29,6 @@ fun main() = SwingUtilities.invokeLater {
             }
         }
     }
-    jFrameWindow.setSize(800, 600)
-    jFrameWindow.isVisible = true
+    jFrameDialog.setSize(800, 600)
+    jFrameDialog.isVisible = true
 }
