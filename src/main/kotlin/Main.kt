@@ -31,17 +31,17 @@ fun main() = SwingUtilities.invokeLater {
             TextButton("Configure tray icon") {
                 val image = Toolkit.getDefaultToolkit().getImage("/media/faisal/DukeImg/Duke256.png")
                 val popup = PopupMenu()
-                var defaultItem = MenuItem("Exit")
-                defaultItem.addActionListener(ActionListener {
+                val item1 = MenuItem("Exit")
+                item1.addActionListener(ActionListener {
                     println("Exiting....")
                     System.exit(0)
                 })
-                popup.add(defaultItem)
-                defaultItem = MenuItem("Hello from tray")
-                defaultItem.addActionListener {
+                popup.add(item1)
+                val item2 = MenuItem("Hello from tray")
+                item2.addActionListener {
                     println("Hello from system tray")
                 }
-                popup.add(defaultItem)
+                popup.add(item2)
                 val trayIcon = TrayIcon(image, "SystemTray Demo", popup)
                 trayIcon.setImageAutoSize(true)
                 SystemTray.getSystemTray().add(trayIcon)
